@@ -1,0 +1,29 @@
+
+
+const bcrypt = require("bcrypt");
+const saltRounds = 10;
+// instead of plainTextPassword1 variable you can use any and assign any value of choice and you can also change the salt
+const plainTextPassword1 = "P@ssw0rad786";
+const salt1 = "$2a$11$2cEteeswavMAL1OxGZ.Dn."
+
+bcrypt
+  .genSalt(saltRounds)
+  .then(salt => {
+    // can just call it like salt for anything you want to do. salt + 1, etc.
+    console.log("salts: " + salt)
+    return bcrypt.hash(plainTextPassword1, salt1);
+  })
+  .then(hash => {
+// same thing here
+    console.log("Hash:" +hash);
+    // Store hash in your password DB.
+  })
+  .catch(err => console.error(err.message));
+  const Http = new XMLHttpRequest();
+  const url='https://jsonplaceholder.typicode.com/posts';
+  Http.open("GET", url);
+  Http.send();
+  
+  Http.onreadystatechange = (e) => {
+    console.log(Http.responseText)
+  }
